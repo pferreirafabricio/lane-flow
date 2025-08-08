@@ -1,12 +1,12 @@
-import type { TimelineItem } from "../../modules/timeline/timeline.types";
+import type { TimelineActivity } from "../../modules/timeline/timeline.types";
 
 export const TIME_LINE_ITEMS_KEY = "_timeline-items";
 
-export function saveTimelineItems(items: TimelineItem[]) {
+export function saveTimelineItems(items: TimelineActivity[]) {
   localStorage.setItem(TIME_LINE_ITEMS_KEY, JSON.stringify(items));
 }
 
-export function loadTimelineItems(): TimelineItem[] {
+export function loadTimelineItems(): TimelineActivity[] {
   const saved = localStorage.getItem(TIME_LINE_ITEMS_KEY);
   if (!saved) return [];
 

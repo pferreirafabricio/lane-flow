@@ -1,16 +1,16 @@
-import type { TimelineItem } from "./timeline.types";
+import type { TimelineActivity } from "./timeline.types";
 
 /**
  * Takes an array of items and assigns them to lanes based on start/end dates.
  * @returns an array of arrays containing items.
  */
-export function assignLanes(items: TimelineItem[]): TimelineItem[][] {
+export function assignLanes(items: TimelineActivity[]): TimelineActivity[][] {
   const sortedItems = items
     .slice()
     .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
-  const lanes: TimelineItem[][] = [];
+  const lanes: TimelineActivity[][] = [];
 
-  function assignItemToLane(item: TimelineItem) {
+  function assignItemToLane(item: TimelineActivity) {
     for (const lane of lanes) {
       const lastItem = lane[lane.length - 1];
       if (new Date(lastItem.end).getTime() < new Date(item.start).getTime()) {
@@ -27,7 +27,7 @@ export function assignLanes(items: TimelineItem[]): TimelineItem[][] {
   return lanes;
 }
 
-export function getTimelineRange(items: TimelineItem[]) {
+export function getTimelineRange(items: TimelineActivity[]) {
   const min = items.reduce(
     (acc, item) => (item.start < acc ? item.start : acc),
     items[0].start

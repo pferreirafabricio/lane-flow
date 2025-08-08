@@ -1,0 +1,29 @@
+.container {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: black;
+}
+
+.label {
+  width: 100px;
+}
+
+.magnifyButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.magnifyButton:hover {
+  background: #1565c0;
+}

@@ -1,4 +1,4 @@
-export type TimelineItem = {
+export type TimelineActivity = {
   id: number;
   start: string;
   end: string;
