@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <div>
-      <header style={{ textAlign: "center", padding: "48px 0 24px 0" }}>
+      <header style={{ textAlign: "center", padding: "24px 0 24px 0" }}>
         <div style={{ display: "inline-block", marginBottom: 16 }}>
           <svg
             width="120"
@@ -59,7 +59,7 @@ export default function App() {
         <p
           style={{
             fontFamily: "Inter, Arial, sans-serif",
-            fontSize: 18,
+            fontSize: 16,
             color: "#5A5C69",
             maxWidth: 540,
             margin: "16px auto 0 auto",
