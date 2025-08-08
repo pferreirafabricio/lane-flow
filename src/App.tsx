@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Timeline from "./Timeline";
+import Timeline from "./modules/timeline";
 import "./App.css";
 
 export default function App() {
@@ -8,20 +8,12 @@ export default function App() {
 
   useEffect(() => {
     fetch("/mock-data.json")
-      .then((res) => {
-        console.log("fetching items from mock-data.json");
-        console.log("items", res);
-
-        return res;
-      })
       .then((res) => res.json())
       .then(setItems)
       .finally(() => {
         setLoading(false);
       });
   }, []);
-
-  console.log("items", items);
 
   return (
     <div className="App">
