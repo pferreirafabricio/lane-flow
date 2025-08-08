@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
 import Timeline from "./modules/timeline";
-import "./App.css";
+import { fetchTimeline } from "./services/lanes-service";
+import type { TimelineActivity } from "./modules/timeline/timeline.types";
 
 export default function App() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<TimelineActivity[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/mock-data.json")
-      .then((res) => res.json())
-      .then(setItems)
-      .finally(() => {
-        setLoading(false);
-      });
+    const fetchData = async () => {
+      const items = await fetchTimeline();
+      setItems(items);
+      setLoading(false);
+    };
+    fetchData();
   }, []);
 
   return (
-    <div className="App">
+    <main>
       <h1>Timeline</h1>
       {loading && <p>Loading...</p>}
       {!loading && <Timeline items={items} />}
-    </div>
+    </main>
   );
 }

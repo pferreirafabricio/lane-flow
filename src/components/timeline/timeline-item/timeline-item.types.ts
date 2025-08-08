@@ -5,7 +5,6 @@ export type TimelineItemProps = {
   minDate: string;
   currentZoom: number;
   isEditing?: boolean;
-  isDragging: boolean;
   handleEdit: (id: number) => void;
   handleEditSave: (id: number, newName: string) => void;
 };

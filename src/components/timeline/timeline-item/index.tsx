@@ -2,7 +2,6 @@ import styles from "./timeline-item.module.css";
 
 import type { TimelineItemProps } from "./timeline-item.types";
 import { daysBetween } from "../../../shared/utils/date";
-import { GripVertical } from "lucide-react";
 import { useState } from "react";
 
 export default function TimelineItem({
@@ -10,7 +9,6 @@ export default function TimelineItem({
   minDate,
   currentZoom,
   isEditing,
-  isDragging,
   handleEdit,
   handleEditSave,
 }: TimelineItemProps) {
@@ -34,7 +32,6 @@ export default function TimelineItem({
   return (
     <div
       className={styles.container}
-      data-dragging={isDragging}
       style={{
         left: offset * currentZoom,
         width: span * currentZoom,

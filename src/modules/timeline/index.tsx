@@ -10,6 +10,7 @@ import type { TimelineActivity } from "./timeline.types";
 import TimelineHeader from "../../components/timeline/timeline-header";
 import TimelineZoom from "../../components/timeline/timeline-zoom";
 import TimelineItem from "../../components/timeline/timeline-item";
+import styles from "./timeline.module.css";
 
 export default function Timeline({ items }: { items: TimelineActivity[] }) {
   const [zoom, setZoom] = useState(50);
@@ -46,7 +47,7 @@ export default function Timeline({ items }: { items: TimelineActivity[] }) {
   }
 
   return (
-    <div className="timeline-container" ref={timelineRef} tabIndex={0}>
+    <div className={styles.container} ref={timelineRef} tabIndex={0}>
       <TimelineZoom
         currentZoom={zoom}
         onZoomOut={() => setZoom((z) => Math.max(z - 10, 50))}
@@ -54,7 +55,7 @@ export default function Timeline({ items }: { items: TimelineActivity[] }) {
       />
       <TimelineHeader dates={headerDates} zoom={zoom} />
       {lanes.map((lane, laneIdx) => (
-        <div key={laneIdx} className="timeline-lane">
+        <div key={laneIdx} className={styles.lane}>
           {lane.map((item) => (
             <TimelineItem
               key={item.id}

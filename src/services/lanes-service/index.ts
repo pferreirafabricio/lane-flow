@@ -21,3 +21,13 @@ export function loadTimelineItems(): TimelineActivity[] {
 export function hasSavedTimelineItems(): boolean {
   return localStorage.getItem(TIME_LINE_ITEMS_KEY) !== null;
 }
+
+export async function fetchTimeline(): Promise<TimelineActivity[]> {
+  const response = await fetch("/mock-data.json");
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch timeline");
+  }
+
+  return response.json();
+}
