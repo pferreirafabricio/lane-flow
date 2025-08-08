@@ -23,3 +23,14 @@ body {
   color: var(--color-neutral-text);
   font-family: var(--font-body);
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-primary);
+}
