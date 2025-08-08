@@ -15,3 +15,12 @@ export function daysBetween(start: string, end: string) {
     (1000 * 60 * 60 * 24)
   );
 }
+
+export function getDateParts(date: string): {
+  year: number;
+  month: number;
+  day: number;
+} {
+  const [year, month, day] = date.split("-").map(Number);
+  return { year, month, day };
+}

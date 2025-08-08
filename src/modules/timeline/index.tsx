@@ -7,6 +7,8 @@ import {
   saveTimelineItems,
 } from "../../services/lanes-service";
 import type { TimelineItem } from "./timeline.types";
+import { ZoomIn, ZoomOut } from "lucide-react";
+import TimelineHeader from "../../components/timeline/timeline-header";
 
 export default function Timeline({ items }: { items: TimelineItem[] }) {
   const [zoom, setZoom] = useState(50);
@@ -32,6 +34,7 @@ export default function Timeline({ items }: { items: TimelineItem[] }) {
     headerDates.push(d.toISOString().slice(0, 10));
   }
 
+  // Improved drag-and-drop experience
   function handleDragStart(
     e: React.MouseEvent,
     id: number,
@@ -41,9 +44,14 @@ export default function Timeline({ items }: { items: TimelineItem[] }) {
     setDragType(type);
     setDragOffset(e.clientX);
     document.body.style.cursor = "ew-resize";
+
+    // Attach listeners to window for smooth drag
+    window.addEventListener("mousemove", handleDragMove);
+    window.addEventListener("mouseup", handleDragEnd);
   }
-  function handleDrag(e: React.MouseEvent) {
-    if (dragId && dragType && timelineRef.current && e.buttons === 1) {
+
+  function handleDragMove(e: MouseEvent) {
+    if (dragId && dragType) {
       const deltaPx = e.clientX - dragOffset;
       const deltaDays = Math.round(deltaPx / zoom);
       setLocalItems((prev: TimelineItem[]) => {
@@ -69,11 +77,14 @@ export default function Timeline({ items }: { items: TimelineItem[] }) {
       });
     }
   }
+
   function handleDragEnd() {
     setDragId(null);
     setDragType(null);
     setDragOffset(0);
     document.body.style.cursor = "default";
+    window.removeEventListener("mousemove", handleDragMove);
+    window.removeEventListener("mouseup", handleDragEnd);
   }
 
   function handleEdit(id: number, name: string) {
@@ -111,27 +122,23 @@ export default function Timeline({ items }: { items: TimelineItem[] }) {
       onKeyDown={handleKeyDown}
     >
       <div className="timeline-zoom-controls">
+        <span className="zoom-label">
+          Zoom: {Math.round(((zoom - 50) / (120 - 50)) * 100)}%
+        </span>
         <button
           onClick={() => setZoom((z) => Math.max(z - 10, 50))}
           disabled={zoom <= 50}
         >
-          -
+          <ZoomOut />
         </button>
-        <span>Zoom: {zoom}px/day</span>
         <button
           onClick={() => setZoom((z) => Math.min(z + 10, 120))}
           disabled={zoom >= 120}
         >
-          +
+          <ZoomIn />
         </button>
       </div>
-      <div className="timeline-header">
-        {headerDates.map((date) => (
-          <div key={date} className="timeline-date" style={{ minWidth: zoom }}>
-            {date}
-          </div>
-        ))}
-      </div>
+      <TimelineHeader dates={headerDates} zoom={zoom} />
       {lanes.map((lane, laneIdx) => (
         <div key={laneIdx} className="timeline-lane">
           {lane.map((item) => {
@@ -153,8 +160,7 @@ export default function Timeline({ items }: { items: TimelineItem[] }) {
                 title={`${itemName} (${item.start} - ${item.end})`}
                 tabIndex={0}
                 onDoubleClick={() => handleEdit(itemId, itemName)}
-                onMouseUp={handleDragEnd}
-                onMouseMove={handleDrag}
+                // Drag events handled globally
               >
                 <span
                   className="drag-handle"

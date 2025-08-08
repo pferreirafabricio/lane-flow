@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  font-weight: bold;
+  margin-bottom: 8px;
+  background: #f5faff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(33, 150, 243, 0.04);
+}
+
+.dateLabel {
+  color: black;
+  min-width: 40px;
+  text-align: center;
+  font-size: 12px;
+  border-right: 1px solid #e0e7ef;
+  padding: 4px 0;
+}
