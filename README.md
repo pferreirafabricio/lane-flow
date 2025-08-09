@@ -12,6 +12,8 @@
 
 ## Overview
 
+<img src="docs/example.png" />
+
 This project is a React + TypeScript + Vite implementation of a compact, accessible timeline component. It visualizes events in horizontal lanes, efficiently packing items to minimize space while ensuring event names are readable and responsive.
 
 ## What I Like About My Implementation
