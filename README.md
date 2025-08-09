@@ -20,7 +20,6 @@ This project is a React + TypeScript + Vite implementation of a compact, accessi
 ## What I Like About My Implementation
 
 - **Accessibility:** All interactive components include ARIA attributes and keyboard navigation for screen reader support.
-- **Responsiveness:** Timeline items adapt their font size and layout to fit event names, using container queries and CSS variables for a consistent visual identity.
 - **User Experience:** Features like zooming, inline editing, and clearing changes make the timeline interactive and intuitive.
 - **Maintainability:** The code is modular, with clear separation of concerns and reusable components.
 
@@ -30,6 +29,7 @@ This project is a React + TypeScript + Vite implementation of a compact, accessi
 - **Animations:** Smooth transitions for lane assignment and item movement would enhance the experience.
 - **Testing:** Integrate automated accessibility and UI tests for reliability.
 - **Performance:** Optimize rendering for very large datasets.
+- **Responsiveness:** Timeline items adapt their font size and layout to fit event names, using container queries.
 
 ## Design Decisions & Inspiration
 
@@ -42,17 +42,14 @@ This project is a React + TypeScript + Vite implementation of a compact, accessi
 - **Unit Tests:** For lane assignment, date calculations, and component logic.
 - **Accessibility Audits:** Using tools like axe and Lighthouse.
 - **Cross-Browser Testing:** Ensure consistent behavior and appearance.
-- **Drag and Drop:** Implement a drag-and-drop interface for timeline items.
 - **Responsiveness:** Container queries and CSS clamp ensure timeline items look good at any zoom level or screen size.
 
 ## Getting Started
 
-If you did not use the starter code, follow these steps to build and run the project:
-
 1. **Install dependencies:**
 
   ```sh
-  npm install
+  npm i
   ```
 
 2. **Start the development server:**
