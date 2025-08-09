@@ -19,7 +19,7 @@ This project is a React + TypeScript + Vite implementation of a compact, accessi
 ## What I Like About My Implementation
 
 - **Accessibility:** All interactive components include ARIA attributes and keyboard navigation for screen reader support.
-- **User Experience:** Features like zooming, inline editing, and clearing changes make the timeline interactive and intuitive.
+- **User Experience:** Features like inline editing and clearing changes make the timeline interactive and intuitive.
 - **Maintainability:** The code is modular, with clear separation of concerns and reusable components.
 
 ## What I Would Change Next Time
@@ -40,7 +40,7 @@ This project is a React + TypeScript + Vite implementation of a compact, accessi
 ## How I Would Test With More Time
 
 - **Unit Tests:** For lane assignment, date calculations, and component logic.
-- **Accessibility Audits:** Using tools like axe and Lighthouse.
+- **Accessibility Audits:** Using tools like PageInsights and Lighthouse.
 - **Cross-Browser Testing:** Ensure consistent behavior and appearance.
 - **Responsiveness:** Container queries and CSS clamp ensure timeline items look good at any zoom level or screen size.
 
