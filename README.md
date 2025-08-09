@@ -1,69 +1,85 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1 align="right">
+  <img src="public/favicon/favicon.svg" width="100px" align="left" />
+  LaneFlow ⏲️
+</h1>
 
-Currently, two official plugins are available:
+<p align="right">
+  A simple timeline component for visualizing events in a compact and accessible way.
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+<br/>
+<br/>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Overview
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+This project is a React + TypeScript + Vite implementation of a compact, accessible timeline component. It visualizes events in horizontal lanes, efficiently packing items to minimize space while ensuring event names are readable and responsive.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## What I Like About My Implementation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Accessibility:** All interactive components include ARIA attributes and keyboard navigation for screen reader support.
+- **Responsiveness:** Timeline items adapt their font size and layout to fit event names, using container queries and CSS variables for a consistent visual identity.
+- **User Experience:** Features like zooming, inline editing, and clearing changes make the timeline interactive and intuitive.
+- **Maintainability:** The code is modular, with clear separation of concerns and reusable components.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## What I Would Change Next Time
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Drag & Drop:** Add robust drag-and-drop support for changing event dates directly on the timeline.
+- **Animations:** Smooth transitions for lane assignment and item movement would enhance the experience.
+- **Testing:** Integrate automated accessibility and UI tests for reliability.
+- **Performance:** Optimize rendering for very large datasets.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Design Decisions & Inspiration
+
+- **Compact Lane Packing:** Used a custom lane assignment algorithm to minimize vertical space, inspired by Gantt charts and calendar UIs.
+- **Visual Identity:** All colors and fonts use project-wide CSS variables for consistency.
+- **Accessibility:** Followed WAI-ARIA guidelines and referenced accessible React component libraries for best practices.
+
+## How I Would Test With More Time
+
+- **Unit Tests:** For lane assignment, date calculations, and component logic.
+- **Accessibility Audits:** Using tools like axe and Lighthouse.
+- **Cross-Browser Testing:** Ensure consistent behavior and appearance.
+- **Drag and Drop:** Implement a drag-and-drop interface for timeline items.
+- **Responsiveness:** Container queries and CSS clamp ensure timeline items look good at any zoom level or screen size.
+
+## Getting Started
+
+If you did not use the starter code, follow these steps to build and run the project:
+
+1. **Install dependencies:**
+
+  ```sh
+  npm install
+  ```
+
+2. **Start the development server:**
+
+  ```sh
+  npm run dev
+  ```
+
+3. **Open your browser:**
+  Visit `http://localhost:5173` (or the port shown in your terminal).
+
+The timeline will render sample data from `public/mock-data.json`.
+
+## File Structure
+
+- `src/modules/timeline/` — Main timeline logic and layout
+- `src/components/timeline/` — Timeline UI components (header, item, zoom, clear)
+- `src/services/lanes-service/` — Local storage and lane assignment utilities
+- `src/shared/utils/` — Date utilities
+
+## License
+
+This project is under the MIT license. Take a look at the [LICENSE](LICENSE) file for more details.
+
+## Contribute
+
+1. Fork this repository
+2. Create a branch with your feature: `git checkout -b my-feature`
+3. Commit your changes: `git commit -m 'feat: My new feature'`
+4. Push your branch: `git push origin my-feature`
