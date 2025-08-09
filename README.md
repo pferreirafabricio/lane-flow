@@ -8,9 +8,6 @@
   A simple timeline component for visualizing events in a compact and accessible way.
 </p>
 
----
-
-<br/>
 <br/>
 
 ## Overview
