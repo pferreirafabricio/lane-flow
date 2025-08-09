@@ -9,13 +9,12 @@ import {
 } from "../../services/lanes-service";
 import type { TimelineActivity } from "./timeline.types";
 import TimelineHeader from "../../components/timeline/timeline-header";
-import TimelineZoom from "../../components/timeline/timeline-zoom";
 import TimelineItem from "../../components/timeline/timeline-item";
 import styles from "./timeline.module.css";
 import TimelineClear from "../../components/timeline/timeline-clear";
 
 export default function Timeline({ items }: { items: TimelineActivity[] }) {
-  const [zoom, setZoom] = useState(50);
+  // const [zoom, setZoom] = useState(70);
   const [editId, setEditId] = useState<number | null>(null);
   const [localItems, setLocalItems] = useState<TimelineActivity[]>(() => {
     if (hasSavedTimelineItems()) return loadTimelineItems();
@@ -62,11 +61,11 @@ export default function Timeline({ items }: { items: TimelineActivity[] }) {
         or interact with items using keyboard or mouse.
       </span>
       <div className={styles.toolbar}>
-        <TimelineZoom
+        {/* <TimelineZoom
           currentZoom={zoom}
-          onZoomOut={() => setZoom((z) => Math.max(z - 10, 50))}
-          onZoomIn={() => setZoom((z) => Math.min(z + 10, 120))}
-        />
+          onZoomOut={() => setZoom((z) => Math.max(z - 10, 70))}
+          onZoomIn={() => setZoom((z) => Math.min(z + 10, 140))}
+        /> */}
         <TimelineClear
           onClear={() => {
             setLocalItems(items);
@@ -74,7 +73,7 @@ export default function Timeline({ items }: { items: TimelineActivity[] }) {
           }}
         />
       </div>
-      <TimelineHeader dates={headerDates} zoom={zoom} />
+      <TimelineHeader dates={headerDates} zoom={100} />
       {lanes.map((lane, laneIdx) => (
         <div key={laneIdx} className={styles.lane}>
           {lane.map((item) => (
@@ -82,7 +81,7 @@ export default function Timeline({ items }: { items: TimelineActivity[] }) {
               key={item.id}
               item={item}
               minDate={minDate}
-              currentZoom={zoom}
+              currentZoom={100}
               isEditing={editId === item.id}
               handleEdit={handleEdit}
               handleEditSave={handleEditSave}

@@ -10,23 +10,23 @@ export default function TimelineZoom({
   return (
     <div className={styles.container} role="group" aria-label="Timeline zoom controls">
       <span className={styles.label} aria-live="polite" aria-atomic="true">
-        Zoom: {Math.round(((currentZoom - 50) / (120 - 50)) * 100)}%
+        Zoom: {Math.round(((currentZoom - 70) / (140 - 70)) * 100)}%
       </span>
       <button
         className={styles.magnifyButton}
         onClick={onZoomOut}
-        disabled={currentZoom <= 50}
+        disabled={currentZoom <= 70}
         aria-label="Zoom out"
-        aria-disabled={currentZoom <= 50 ? "true" : "false"}
+        aria-disabled={currentZoom <= 70 ? "true" : "false"}
       >
         <ZoomOut aria-hidden="true" />
       </button>
       <button
         className={styles.magnifyButton}
         onClick={onZoomIn}
-        disabled={currentZoom >= 120}
+        disabled={currentZoom >= 140}
         aria-label="Zoom in"
-        aria-disabled={currentZoom >= 120 ? "true" : "false"}
+        aria-disabled={currentZoom >= 140 ? "true" : "false"}
       >
         <ZoomIn aria-hidden="true" />
       </button>

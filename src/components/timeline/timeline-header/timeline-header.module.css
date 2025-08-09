@@ -1,14 +1,16 @@
 .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: flex-start;
+  min-width: max-content;
+  width: auto;
   flex-wrap: nowrap;
   font-weight: bold;
   margin-bottom: 8px;
   background: #f5faff;
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(33, 150, 243, 0.04);
+  overflow-x: auto;
 }
 
 .dateLabel {

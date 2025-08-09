@@ -27,6 +27,7 @@ This project is a React + TypeScript + Vite implementation of a compact, accessi
 - **Testing:** Integrate automated accessibility and UI tests for reliability.
 - **Performance:** Optimize rendering for very large datasets.
 - **Responsiveness:** Timeline items adapt their font size and layout to fit event names, using container queries.
+- **Zoom:** Implement a zoom feature to allow users to adjust the timeline view.
 
 ## Design Decisions & Inspiration
 
