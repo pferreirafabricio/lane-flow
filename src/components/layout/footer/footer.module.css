@@ -3,4 +3,8 @@
   color: var(--color-neutral-text);
   font-size: 14px;
   padding: 24px 0 8px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

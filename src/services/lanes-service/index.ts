@@ -18,6 +18,10 @@ export function loadTimelineItems(): TimelineActivity[] {
   }
 }
 
+export function clearTimelineItems() {
+  localStorage.removeItem(TIME_LINE_ITEMS_KEY);
+}
+
 export function hasSavedTimelineItems(): boolean {
   return localStorage.getItem(TIME_LINE_ITEMS_KEY) !== null;
 }

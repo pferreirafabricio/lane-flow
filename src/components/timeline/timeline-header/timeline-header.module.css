@@ -1,6 +1,9 @@
 .container {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
+  flex-wrap: nowrap;
   font-weight: bold;
   margin-bottom: 8px;
   background: #f5faff;
@@ -10,7 +13,7 @@
 
 .dateLabel {
   color: black;
-  min-width: 40px;
+  flex: 1 0 40px;
   text-align: center;
   font-size: 12px;
   border-right: 1px solid #e0e7ef;

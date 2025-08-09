@@ -23,32 +23,18 @@ export default function App() {
   return (
     <div>
       <header style={{ textAlign: "center", padding: "24px 0 24px 0" }}>
-        <div style={{ display: "inline-block", marginBottom: 16 }}>
-          <svg
-            width="120"
-            height="48"
-            viewBox="0 0 120 48"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect x="10" y="18" width="32" height="12" rx="6" fill="#4E73DF" />
-            <rect x="46" y="10" width="28" height="12" rx="6" fill="#F6C23E" />
-            <rect x="78" y="26" width="28" height="12" rx="6" fill="#1CC88A" />
-            <rect
-              x="60"
-              y="34"
-              width="18"
-              height="12"
-              rx="6"
-              fill="#4E73DF"
-              style={{ filter: "drop-shadow(0 2px 6px rgba(78,115,223,0.18))" }}
-            />
-          </svg>
+        <div style={{ display: "inline-block", marginBottom: 8 }}>
+          <img
+            src="/favicon/favicon.svg"
+            alt="LaneFlow Logo"
+            width={64}
+            height={64}
+          />
         </div>
         <h1
           style={{
             fontWeight: 700,
-            fontSize: 40,
+            fontSize: 32,
             color: "#4E73DF",
             margin: 0,
             letterSpacing: "-1px",
@@ -59,7 +45,7 @@ export default function App() {
         <p
           style={{
             fontFamily: "Inter, Arial, sans-serif",
-            fontSize: 16,
+            fontSize: 14,
             color: "#5A5C69",
             maxWidth: 540,
             margin: "16px auto 0 auto",

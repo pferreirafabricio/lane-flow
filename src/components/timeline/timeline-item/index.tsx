@@ -26,7 +26,6 @@ export default function TimelineItem({
 
   function handleEditSaveLocal(id: number) {
     handleEditSave(id, editName);
-    setEditName("");
   }
 
   return (
@@ -36,16 +35,17 @@ export default function TimelineItem({
         left: offset * currentZoom,
         width: span * currentZoom,
       }}
-      title={`${itemName} (${item.start} - ${item.end})`}
+      title={`${itemName} (${item.start} - ${item.end}). Double click to edit.`}
       tabIndex={0}
-      onDoubleClick={() => handleEdit(itemId)}
+      role="button"
+      aria-label={`Timeline event: ${itemName}, from ${item.start} to ${item.end}`}
+      aria-pressed={isEditing ? "true" : "false"}
+      aria-describedby={`timeline-item-desc-${itemId}`}
+      onDoubleClick={() => {
+        setEditName(itemName);
+        handleEdit(itemId);
+      }}
     >
-      {/* <span
-        className={styles.dragHandle}
-        onMouseDown={(e) => handleDragStart(e, itemId, "start")}
-      >
-        <GripVertical />
-      </span> */}
       {isEditing ? (
         <input
           value={editName}
@@ -57,14 +57,13 @@ export default function TimelineItem({
           autoFocus
         />
       ) : (
-        <span style={{ flex: 1 }}>{itemName}</span>
+        <>
+          <span style={{ flex: 1 }}>{itemName}</span>
+          <span id={`timeline-item-desc-${itemId}`} style={{ display: "none" }}>
+            {`Event ${itemName} runs from ${item.start} to ${item.end}.`}
+          </span>
+        </>
       )}
-      {/* <span
-        className={styles.dragHandle}
-        onMouseDown={(e) => handleDragStart(e, itemId, "end")}
-      >
-        <GripVertical />
-      </span> */}
     </div>
   );
 }
